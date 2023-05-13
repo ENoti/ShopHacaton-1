@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Shop</string>
+    <string name="amount">Amount</string>
+    <string name="price">Price</string>
+    <string name="category">Category</string>
+    <string name="name">Name</string>
+    <string name="shop">shop</string>
+    <string name="updateDataButton">Обновить данные</string>
+</resources>
