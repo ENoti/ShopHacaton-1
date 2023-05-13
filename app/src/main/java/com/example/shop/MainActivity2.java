@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
-    private static String JSON_URL = "https://914e-195-225-110-33.ngrok-free.app/api/shops/";// UTF-8
+    private static String JSON_URL = "https://d5b4-194-186-53-99.ngrok-free.app/api/shops/";// UTF-8
 
     int shop_id;
     ListView listView;
