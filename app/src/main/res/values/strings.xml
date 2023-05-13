@@ -6,4 +6,5 @@
     <string name="name">Name</string>
     <string name="shop">shop</string>
     <string name="updateDataButton">Обновить данные</string>
+    <string name="selectButtonBasket">Добавить в корзину</string>
 </resources>
