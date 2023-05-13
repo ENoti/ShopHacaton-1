@@ -13,10 +13,16 @@
         android:theme="@style/Theme.Shop"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity2"
+            android:name=".ProductsWindow"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CartWindow"
+            android:exported="false" />
+        <activity
+            android:name=".ShopWindow"
+            android:exported="false" />
+        <activity
+            android:name=".StartMenu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ShopWindow">
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="610dp"
+        android:layout_width="363dp"
+        android:layout_height="556dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="45dp">
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="102dp">
 
     </ListView>
 
@@ -34,7 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="39dp"
         android:text="Refresh" />
 
 </RelativeLayout >

@@ -8,19 +8,29 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+
 import java.util.ArrayList;
 
 public class ListViewAdapterProducts extends ArrayAdapter<Product>{
         int listLayout;
         ArrayList<Product> usersList;
         Context context;
+        Button btn;
+
+        Cart cart;
+        int shop_id;
+        RequestQueue requestQueue;
 
         public ListViewAdapterProducts(Context context, int listLayout,
-                                       int field, ArrayList<Product> usersList) {
+                                       int field, ArrayList<Product> usersList, Cart cart, int shop_id, RequestQueue requestQueue) {
             super(context, listLayout, field, usersList);
             this.context = context;
             this.listLayout=listLayout;
             this.usersList = usersList;
+            this.cart = cart;
+            this.shop_id = shop_id;
+            this.requestQueue = requestQueue;
         }
 
         @Override
@@ -35,6 +45,8 @@ public class ListViewAdapterProducts extends ArrayAdapter<Product>{
             category.setText(usersList.get(position).getCategory());
             amount.setText(usersList.get(position).getAmount() + "");
             price.setText(usersList.get(position).getPrice() + "");
+            btn = listViewItem.findViewById(R.id.button2);
+            btn.setOnClickListener(new OnClickForProductsBasket(usersList.get(position), cart,shop_id, requestQueue));
             return listViewItem;
         }
 

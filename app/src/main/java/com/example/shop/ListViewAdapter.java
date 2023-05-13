@@ -15,14 +15,14 @@ public class ListViewAdapter  extends ArrayAdapter<Shop> {
     ArrayList<Shop> usersList;
     Context context;
     Button btn1;
-    MainActivity mainActivity;
+    ShopWindow shopWindow;
 
-    public ListViewAdapter(Context context, int listLayout , int field, ArrayList<Shop> usersList, MainActivity mainActivity) {
+    public ListViewAdapter(Context context, int listLayout , int field, ArrayList<Shop> usersList, ShopWindow shopWindow) {
         super(context, listLayout, field, usersList);
         this.context = context;
         this.listLayout=listLayout;
         this.usersList = usersList;
-        this.mainActivity = mainActivity;
+        this.shopWindow = shopWindow;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ListViewAdapter  extends ArrayAdapter<Shop> {
         name.setText(usersList.get(position).getName());
         address.setText(usersList.get(position).getAddress());
         btn1 = (Button) listViewItem.findViewById(R.id.button3);
-        btn1.setOnClickListener(new OnClickForProducts(mainActivity,usersList.get(position).getId()));
+        btn1.setOnClickListener(new OnClickForProducts(shopWindow,usersList.get(position).getId()));
         return listViewItem;
     }
 

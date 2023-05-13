@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -25,13 +26,15 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
-    private static String JSON_URL = "https://d5b4-194-186-53-99.ngrok-free.app/api/shops/";// UTF-8
+public class ProductsWindow extends AppCompatActivity implements View.OnClickListener {
+    private static String JSON_URL = "https://881b-194-186-53-99.ngrok-free.app/api/shops/";// UTF-8
 
     int shop_id;
     ListView listView;
     Shop shop;
-    Button btn1;
+    ImageButton btn1;
+    ImageButton btn2;
+    Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +44,25 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         System.out.println(shop_id);
         setContentView(R.layout.activity_main2);
         listView = (ListView) findViewById(R.id.listView);
-        btn1 = (Button) findViewById(R.id.buttonProducts);
+        btn1 = (ImageButton) findViewById(R.id.imageButtonRefresh);
         btn1.setOnClickListener(this);
+        cart = new Cart();
         loadJSONFromURL(JSON_URL + shop_id);
+
+        btn2 = (ImageButton) findViewById(R.id.imageButtonBasket);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductsWindow.this, CartWindow.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void  loadJSONFromURL(String url){
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(ListView.VISIBLE);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>(){
                     @Override
@@ -64,7 +78,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                                 listItems.add(product);
                             }
                             ListAdapter adapter = new ListViewAdapterProducts(getApplicationContext(),
-                                    R.layout.shop,R.id.textViewName,listItems);
+                                    R.layout.shop,R.id.textViewName,listItems,cart,shop_id,requestQueue);
                             listView.setAdapter(adapter);
                         }catch (JSONException e){
                             e.printStackTrace();
@@ -78,7 +92,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
     private ArrayList< JSONObject> getArrayListFromJSONArray(JSONArray jsonArray){

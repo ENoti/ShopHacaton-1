@@ -24,9 +24,9 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShopWindow extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String JSON_URL_SHOP = "https://d5b4-194-186-53-99.ngrok-free.app/api/shops";// UTF-8
+    private static final String JSON_URL_SHOP = "https://881b-194-186-53-99.ngrok-free.app/api/shops";// UTF-8
     ListView listView;
     Button btn1;
     @Override
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void  loadJSONFromURL(String url){
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(ListView.VISIBLE);
-        MainActivity mainActivity = this;
+        ShopWindow shopWindow = this;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>(){
                     @Override
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 listItems.add(shop);
                             }
                             ListAdapter adapter = new ListViewAdapter(getApplicationContext(),
-                                    R.layout.row,R.id.textViewName,listItems,mainActivity);
+                                    R.layout.row,R.id.textViewName,listItems, shopWindow);
                             listView.setAdapter(adapter);
                         }catch (JSONException e){
                             e.printStackTrace();

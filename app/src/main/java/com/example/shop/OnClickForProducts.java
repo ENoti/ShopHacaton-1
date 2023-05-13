@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.view.View;
 
 public class OnClickForProducts implements View.OnClickListener {
-    private MainActivity mainActivity;
+    private ShopWindow shopWindow;
     int shop_id;
 
-    public OnClickForProducts(MainActivity mainActivity, int shop_id) {
-        this.mainActivity = mainActivity;
+    public OnClickForProducts(ShopWindow shopWindow, int shop_id) {
+        this.shopWindow = shopWindow;
         this.shop_id = shop_id;
     }
 
@@ -18,8 +18,8 @@ public class OnClickForProducts implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(mainActivity, MainActivity2.class);
+        Intent intent = new Intent(shopWindow, ProductsWindow.class);
         intent.putExtra("shop_id",shop_id);
-        mainActivity.startActivity(intent);
+        shopWindow.startActivity(intent);
     }
 }
