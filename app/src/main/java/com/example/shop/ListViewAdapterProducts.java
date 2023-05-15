@@ -22,8 +22,11 @@ public class ListViewAdapterProducts extends ArrayAdapter<Product>{
         int shop_id;
         RequestQueue requestQueue;
 
+        ProductsWindow productsWindow;
+
         public ListViewAdapterProducts(Context context, int listLayout,
-                                       int field, ArrayList<Product> usersList, Cart cart, int shop_id, RequestQueue requestQueue) {
+                                       int field, ArrayList<Product> usersList, Cart cart, int shop_id, RequestQueue requestQueue,
+                                       ProductsWindow productsWindow) {
             super(context, listLayout, field, usersList);
             this.context = context;
             this.listLayout=listLayout;
@@ -31,6 +34,7 @@ public class ListViewAdapterProducts extends ArrayAdapter<Product>{
             this.cart = cart;
             this.shop_id = shop_id;
             this.requestQueue = requestQueue;
+            this.productsWindow = productsWindow;
         }
 
         @Override
@@ -46,7 +50,7 @@ public class ListViewAdapterProducts extends ArrayAdapter<Product>{
             amount.setText(usersList.get(position).getAmount() + "");
             price.setText(usersList.get(position).getPrice() + "");
             btn = listViewItem.findViewById(R.id.button2);
-            btn.setOnClickListener(new OnClickForProductsBasket(usersList.get(position), cart,shop_id, requestQueue));
+            btn.setOnClickListener(new OnClickForProductsBasket(usersList.get(position), cart,shop_id, requestQueue,productsWindow));
             return listViewItem;
         }
 

@@ -27,21 +27,20 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class ProductsWindow extends AppCompatActivity implements View.OnClickListener {
-    private static String JSON_URL = "https://881b-194-186-53-99.ngrok-free.app/api/shops/";// UTF-8
+    public static String JSON_URL = "https://aff3-194-186-53-99.ngrok-free.app/api/shops/";// UTF-8
 
     int shop_id;
     ListView listView;
     Shop shop;
     ImageButton btn1;
     ImageButton btn2;
-    Cart cart;
+    static Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         shop_id = intent.getIntExtra("shop_id",0);
-        System.out.println(shop_id);
         setContentView(R.layout.activity_main2);
         listView = (ListView) findViewById(R.id.listView);
         btn1 = (ImageButton) findViewById(R.id.imageButtonRefresh);
@@ -54,15 +53,17 @@ public class ProductsWindow extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductsWindow.this, CartWindow.class);
+                intent.putExtra("shop_id",shop_id);
                 startActivity(intent);
             }
         });
     }
 
-    private void  loadJSONFromURL(String url){
+    public void  loadJSONFromURL(String url){
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(ListView.VISIBLE);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        ProductsWindow productsWindow = this;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>(){
                     @Override
@@ -78,7 +79,7 @@ public class ProductsWindow extends AppCompatActivity implements View.OnClickLis
                                 listItems.add(product);
                             }
                             ListAdapter adapter = new ListViewAdapterProducts(getApplicationContext(),
-                                    R.layout.shop,R.id.textViewName,listItems,cart,shop_id,requestQueue);
+                                    R.layout.shop,R.id.textViewName,listItems,cart,shop_id,requestQueue,productsWindow);
                             listView.setAdapter(adapter);
                         }catch (JSONException e){
                             e.printStackTrace();

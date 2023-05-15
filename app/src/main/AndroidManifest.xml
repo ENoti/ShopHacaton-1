@@ -13,6 +13,17 @@
         android:theme="@style/Theme.Shop"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CreateNewCard"
+            android:exported="false" />
+        <activity
+            android:name=".SuccessWindow"
+            android:exported="false" />
+        <activity
+            android:name=".CardWindow"
+            android:exported="false"
+            android:label="@string/title_activity_card_window"
+            android:theme="@style/Theme.Shop" />
+        <activity
             android:name=".ProductsWindow"
             android:exported="false" />
         <activity

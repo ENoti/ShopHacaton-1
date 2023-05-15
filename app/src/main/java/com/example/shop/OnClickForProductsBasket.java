@@ -1,7 +1,5 @@
 package com.example.shop;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -9,7 +7,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 public class OnClickForProductsBasket implements View.OnClickListener {
 
@@ -21,20 +18,24 @@ public class OnClickForProductsBasket implements View.OnClickListener {
 
     RequestQueue requestQueue;
 
-    public OnClickForProductsBasket(Product product, Cart cart, int shop_id, RequestQueue requestQueue) {
+    ProductsWindow productsWindow;
+
+    public OnClickForProductsBasket(Product product, Cart cart, int shop_id, RequestQueue requestQueue, ProductsWindow productsWindow) {
         this.product = product;
         this.cart = cart;
         this.shop_id = shop_id;
         this.requestQueue = requestQueue;
+        this.productsWindow = productsWindow;
     }
 
     @Override
     public void onClick(View v) {
-        cart.addProduct(product);
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, "https://881b-194-186-53-99.ngrok-free.app/api/shops/" + shop_id + "/products/" + product.getId(), new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, "https://aff3-194-186-53-99.ngrok-free.app/api/shops/" + shop_id + "/products/" + product.getId(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                cart.setCurrentPrice(cart.getCurrentPrice() + product.getPrice());
+                cart.addProduct(product);
+                productsWindow.loadJSONFromURL(ProductsWindow.JSON_URL+shop_id);
             }
         }, new Response.ErrorListener() {
             @Override

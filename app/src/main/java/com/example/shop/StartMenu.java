@@ -7,16 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class StartMenu extends Activity {
-    static double balance;
-    Button selectShop;
+    Button buttonNextCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.onStart();
         setContentView(R.layout.activity_main0);
-        selectShop = (Button) findViewById(R.id.selectShop);
-        selectShop.setOnClickListener(new View.OnClickListener() {
+        buttonNextCard = (Button) findViewById(R.id.buttonNextCard);
+        buttonNextCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartMenu.this, ShopWindow.class);

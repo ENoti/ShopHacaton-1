@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class ShopWindow extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String JSON_URL_SHOP = "https://881b-194-186-53-99.ngrok-free.app/api/shops";// UTF-8
+    private static final String JSON_URL_SHOP = "https://aff3-194-186-53-99.ngrok-free.app/api/shops";// UTF-8
     ListView listView;
     Button btn1;
     @Override
