@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="165dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="230dp"
+        android:background="@drawable/box" />
+
+    <EditText
+        android:id="@+id/textNumberCard"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="60dp"
+        android:hint="Номер карты"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/textNameBankCard"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textNumberCard"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="110dp"
+        android:hint="Название банка"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/textDateCard"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="3dp"
+        android:hint="Дата"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/saveButtonCard"
+        android:layout_width="246dp"
+        android:layout_height="84dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="42dp"
+        android:text="Сохранить" />
+
+</RelativeLayout>
