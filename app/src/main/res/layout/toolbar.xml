@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#DE2777"
+    android:elevation="4dp">
+
+
+    <ImageButton
+        android:id="@+id/imageButtonRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="270dp"
+        android:background="@android:drawable/stat_notify_sync"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClick"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonBasket"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/cart_trolley_ui_5_svgrepo_com"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+</androidx.appcompat.widget.Toolbar>
